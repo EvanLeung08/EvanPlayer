@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EvanPlayer - AI 智能英语学习视频播放器</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue",
+          sans-serif;
+        background: #0a0e14;
+        color: #e6edf3;
+        line-height: 1.7;
+      }
+      a {
+        color: #58a6ff;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+
+      /* Hero */
+      .hero {
+        text-align: center;
+        padding: 80px 20px 60px;
+        background: linear-gradient(
+          135deg,
+          #0a0e14 0%,
+          #1a1040 50%,
+          #0a0e14 100%
+        );
+      }
+      .hero-icon {
+        width: 120px;
+        height: 120px;
+        border-radius: 26px;
+        background: linear-gradient(135deg, #58a6ff, #bc8cff);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 30px;
+        font-size: 56px;
+      }
+      .hero h1 {
+        font-size: 48px;
+        font-weight: 700;
+        background: linear-gradient(135deg, #58a6ff, #bc8cff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 12px;
+      }
+      .hero .tagline {
+        font-size: 20px;
+        color: #8b949e;
+        margin-bottom: 30px;
+      }
+      .hero .cta {
+        display: inline-block;
+        padding: 14px 36px;
+        background: linear-gradient(135deg, #58a6ff, #bc8cff);
+        color: #fff;
+        border-radius: 12px;
+        font-size: 18px;
+        font-weight: 600;
+        transition: opacity 0.2s;
+      }
+      .hero .cta:hover {
+        opacity: 0.9;
+        text-decoration: none;
+      }
+
+      /* Container */
+      .container {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Features */
+      .features {
+        padding: 60px 0;
+      }
+      .features h2 {
+        text-align: center;
+        font-size: 32px;
+        margin-bottom: 50px;
+        color: #f0f6fc;
+      }
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
+      }
+      .feature-card {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 16px;
+        padding: 28px;
+        backdrop-filter: blur(10px);
+        transition: border-color 0.2s;
+      }
+      .feature-card:hover {
+        border-color: rgba(88, 166, 255, 0.3);
+      }
+      .feature-card .icon {
+        font-size: 32px;
+        margin-bottom: 14px;
+      }
+      .feature-card h3 {
+        font-size: 18px;
+        color: #f0f6fc;
+        margin-bottom: 8px;
+      }
+      .feature-card p {
+        font-size: 14px;
+        color: #8b949e;
+        line-height: 1.6;
+      }
+
+      /* Highlight */
+      .highlight {
+        padding: 60px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+      }
+      .highlight h2 {
+        text-align: center;
+        font-size: 32px;
+        margin-bottom: 16px;
+        color: #f0f6fc;
+      }
+      .highlight .desc {
+        text-align: center;
+        color: #8b949e;
+        font-size: 16px;
+        max-width: 640px;
+        margin: 0 auto 40px;
+      }
+      .highlight-list {
+        list-style: none;
+        max-width: 640px;
+        margin: 0 auto;
+      }
+      .highlight-list li {
+        padding: 12px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        font-size: 15px;
+        color: #c9d1d9;
+      }
+      .highlight-list li .check {
+        color: #34d399;
+        font-size: 18px;
+        flex-shrink: 0;
+      }
+
+      /* Footer */
+      footer {
+        text-align: center;
+        padding: 40px 20px;
+        color: #484f58;
+        font-size: 13px;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+      }
+      footer a {
+        color: #6e7681;
+      }
+
+      @media (max-width: 600px) {
+        .hero h1 {
+          font-size: 32px;
+        }
+        .hero .tagline {
+          font-size: 16px;
+        }
+        .feature-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="hero">
+      <div class="hero-icon">▶</div>
+      <h1>EvanPlayer</h1>
+      <p class="tagline">
+        AI 智能英语学习视频播放器<br />把每一段视频变成你的私人英语课堂
+      </p>
+      <a href="https://apps.apple.com/app/evanplayer/id000000000" class="cta"
+        >在 Mac App Store 下载</a
+      >
+    </section>
+
+    <section class="features">
+      <div class="container">
+        <h2>核心功能</h2>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="icon">🎬</div>
+            <h3>全格式视频播放</h3>
+            <p>
+              支持 MP4、MKV、AVI、MOV、WEBM
+              等几乎所有视频格式。变速播放（0.5x–2.0x）、A-B
+              循环、自动记忆播放位置。
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="icon">📝</div>
+            <h3>智能字幕系统</h3>
+            <p>
+              支持 SRT / VTT / ASS
+              外挂字幕和内嵌字幕自动提取。三种显示模式：显示、隐藏、悬停显示。字幕可拖拽、全文搜索。
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="icon">🤖</div>
+            <h3>AI 点击查词翻译</h3>
+            <p>
+              点击字幕任意单词即刻查词。Shift+点击选取短语整句翻译。支持
+              OpenAI（GPT-4o）和 Ollama 本地 AI 双引擎。
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="icon">📖</div>
+            <h3>77 万词条离线词典</h3>
+            <p>
+              内置 ECDICT 离线词典，音标、英英释义、中文翻译、考试标签（四六级 /
+              考研 / 雅思 / 托福 / GRE）一应俱全。
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="icon">✍️</div>
+            <h3>听写练习 + AI 批改</h3>
+            <p>
+              逐句听写同步视频播放。逐词对比批改：正确（绿）、错误（红）、遗漏（黄）。支持
+              AI 反馈分析，错词一键加入生词本。
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="icon">🧠</div>
+            <h3>间隔重复生词本</h3>
+            <p>
+              SM-2 算法科学安排复习。四级掌握度：新词→学习中→复习中→已掌握。TTS
+              朗读拼写测验。一键导出 Excel。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="highlight">
+      <div class="container">
+        <h2>为什么选择 EvanPlayer</h2>
+        <p class="desc">
+          专为英语学习者设计，将视频播放、查词、听写、复习融为一体
+        </p>
+        <ul class="highlight-list">
+          <li>
+            <span class="check">✓</span> 沉浸式学习 —
+            看视频时随时查词翻译，不打断观看体验
+          </li>
+          <li>
+            <span class="check">✓</span> AI 加持 — OpenAI 和本地 Ollama
+            双模型，智能翻译双语释义
+          </li>
+          <li>
+            <span class="check">✓</span> 科学记忆 — SM-2
+            间隔重复算法，告别死记硬背
+          </li>
+          <li>
+            <span class="check">✓</span> 隐私安全 — 所有数据存储在本地，AI
+            使用你自己的 API Key
+          </li>
+          <li>
+            <span class="check">✓</span> 完全离线 — 内置 77
+            万词条词典，无需联网也能查词
+          </li>
+          <li>
+            <span class="check">✓</span> 精心设计 —
+            暗色毛玻璃主题（Glassmorphism），优雅护眼
+          </li>
+          <li>
+            <span class="check">✓</span> 中英双语 — 界面支持中文和英文一键切换
+          </li>
+          <li>
+            <span class="check">✓</span> 听写训练 — 逐句听写+逐词批改+AI
+            分析，精准提升听力
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="highlight">
+      <div class="container">
+        <h2>适合人群</h2>
+        <p class="desc">
+          无论你是备考还是兴趣学习，EvanPlayer 都是你的英语学习好伙伴
+        </p>
+        <ul class="highlight-list">
+          <li>
+            <span class="check">🎓</span> 四六级 / 考研 / 雅思 / 托福 / GRE
+            备考生
+          </li>
+          <li><span class="check">🎬</span> 美剧、英剧、英文电影爱好者</li>
+          <li><span class="check">🎤</span> 英文演讲、TED Talk、纪录片观众</li>
+          <li><span class="check">💼</span> 职场人士 — 通过视频提升商务英语</li>
+          <li><span class="check">📚</span> 任何想通过看视频学英语的人</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2026 EvanPlayer. All rights reserved.</p>
+      <p style="margin-top: 8px">
+        <a href="support.html">支持与帮助</a> ·
+        <a href="privacy.html">隐私政策</a>
+      </p>
+    </footer>
+  </body>
+</html>

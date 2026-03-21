@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EvanPlayer - 支持与帮助</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue",
+          sans-serif;
+        background: #0a0e14;
+        color: #e6edf3;
+        line-height: 1.7;
+      }
+      a {
+        color: #58a6ff;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      .container {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Header */
+      header {
+        padding: 40px 20px 20px;
+        text-align: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      }
+      header h1 {
+        font-size: 28px;
+        background: linear-gradient(135deg, #58a6ff, #bc8cff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 8px;
+      }
+      header p {
+        color: #8b949e;
+        font-size: 15px;
+      }
+      header nav {
+        margin-top: 16px;
+      }
+      header nav a {
+        margin: 0 12px;
+        color: #8b949e;
+        font-size: 14px;
+      }
+      header nav a:hover {
+        color: #58a6ff;
+      }
+
+      /* Content */
+      .content {
+        padding: 40px 0 60px;
+      }
+      .content h2 {
+        font-size: 22px;
+        color: #f0f6fc;
+        margin: 40px 0 16px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      }
+      .content h2:first-child {
+        margin-top: 0;
+      }
+      .content h3 {
+        font-size: 17px;
+        color: #c9d1d9;
+        margin: 24px 0 8px;
+      }
+      .content p {
+        color: #8b949e;
+        font-size: 15px;
+        margin-bottom: 12px;
+      }
+      .content ul {
+        list-style: none;
+        margin-bottom: 16px;
+      }
+      .content ul li {
+        padding: 6px 0;
+        color: #8b949e;
+        font-size: 15px;
+        padding-left: 20px;
+        position: relative;
+      }
+      .content ul li::before {
+        content: "•";
+        color: #58a6ff;
+        position: absolute;
+        left: 0;
+      }
+      .content code {
+        background: rgba(255, 255, 255, 0.06);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 13px;
+        color: #c9d1d9;
+      }
+      .contact-card {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 12px;
+        padding: 24px;
+        margin-top: 16px;
+      }
+      .contact-card p {
+        margin-bottom: 8px;
+      }
+
+      .faq-item {
+        margin-bottom: 24px;
+      }
+      .faq-item summary {
+        font-size: 16px;
+        color: #c9d1d9;
+        cursor: pointer;
+        padding: 8px 0;
+        font-weight: 600;
+      }
+      .faq-item summary:hover {
+        color: #58a6ff;
+      }
+      .faq-item .answer {
+        padding: 8px 0 0 16px;
+        color: #8b949e;
+        font-size: 15px;
+      }
+      .faq-item .answer p {
+        margin-bottom: 8px;
+      }
+
+      .kbd {
+        display: inline-block;
+        padding: 2px 8px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 5px;
+        font-size: 12px;
+        color: #c9d1d9;
+        font-family: inherit;
+      }
+
+      /* Footer */
+      footer {
+        text-align: center;
+        padding: 30px 20px;
+        color: #484f58;
+        font-size: 13px;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      @media (max-width: 600px) {
+        header h1 {
+          font-size: 22px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>EvanPlayer 支持与帮助</h1>
+      <p>AI 智能英语学习视频播放器</p>
+      <nav>
+        <a href="index.html">首页</a>
+        <a href="support.html">帮助</a>
+        <a href="privacy.html">隐私政策</a>
+      </nav>
+    </header>
+
+    <div class="container">
+      <div class="content">
+        <h2>快速入门</h2>
+
+        <h3>1. 打开视频</h3>
+        <p>
+          菜单 → 文件 → 打开视频（<span class="kbd">⌘</span
+          ><span class="kbd">O</span>），或直接将视频文件拖拽到播放界面。支持
+          MP4、MKV、AVI、MOV、WEBM 等格式。
+        </p>
+
+        <h3>2. 加载字幕</h3>
+        <p>
+          EvanPlayer 会自动检测视频同目录下的同名字幕文件（.srt / .vtt /
+          .ass）。也会自动提取 MP4/MKV 中的内嵌字幕。如需手动加载：菜单 → 字幕 →
+          打开字幕文件。
+        </p>
+
+        <h3>3. 点击查词</h3>
+        <p>
+          视频播放时，点击字幕中的任意单词即可弹出释义窗口。按住
+          <span class="kbd">Shift</span> 点击可以选取多个词/短语进行整句翻译。
+        </p>
+
+        <h3>4. AI 翻译</h3>
+        <p>
+          在弹出的释义窗口中点击「AI 智能翻译」按钮，可获取 AI
+          生成的英英释义、中英对照翻译和例句。需先在设置中配置 OpenAI API Key
+          或本地 Ollama。
+        </p>
+
+        <h3>5. 听写练习</h3>
+        <p>
+          在右侧面板切换到「听写」标签页。视频将自动循环当前字幕句，你可以在输入框中键入听到的内容，然后点击「检查」查看逐词对比结果。
+        </p>
+
+        <h3>6. 生词本</h3>
+        <p>
+          查词后点击「保存到生词本」，词汇将记录来源视频和字幕上下文。在「词汇」标签页中可查看所有保存的单词，并进行
+          SM-2 间隔重复复习。
+        </p>
+
+        <h2>常见问题</h2>
+
+        <details class="faq-item">
+          <summary>视频无法播放 / 提示格式不支持？</summary>
+          <div class="answer">
+            <p>EvanPlayer 使用多引擎架构：</p>
+            <ul>
+              <li>MP4/MOV 等常见格式由 <strong>JavaFX 引擎</strong>直接播放</li>
+              <li>
+                MKV/AVI 等格式需要 <strong>VLC</strong>（请前往
+                <a href="https://www.videolan.org/vlc/">videolan.org</a>
+                下载安装）或 <strong>FFmpeg</strong>
+              </li>
+            </ul>
+            <p>安装 VLC 后重新打开视频即可。</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>字幕显示不正确 / 乱码？</summary>
+          <div class="answer">
+            <p>
+              EvanPlayer
+              已内置自动字符编码检测。如果仍然乱码，可能是字幕文件使用了非 UTF-8
+              编码。请用文本编辑器将字幕文件另存为
+              <strong>UTF-8</strong> 编码后重新加载。
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>字幕和视频不同步？</summary>
+          <div class="answer">
+            <p>使用快捷键调整字幕时间轴偏移：</p>
+            <ul>
+              <li>
+                <span class="kbd">⌘</span><span class="kbd">→</span> 字幕延后
+                100ms
+              </li>
+              <li>
+                <span class="kbd">⌘</span><span class="kbd">←</span> 字幕提前
+                100ms
+              </li>
+            </ul>
+            <p>多次按下直到字幕与语音同步。</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>如何配置 OpenAI？</summary>
+          <div class="answer">
+            <p>
+              菜单 → 设置 → 选择 <strong>OpenAI</strong> → 填入你的 API Key。
+            </p>
+            <p>
+              API Key 获取方式：前往
+              <a href="https://platform.openai.com/api-keys"
+                >platform.openai.com</a
+              >
+              注册账号并创建 API Key。推荐使用 GPT-4o-mini 模型（性价比最高）。
+            </p>
+            <p>
+              你也可以使用任何 OpenAI 兼容的 API 服务（如 DeepSeek、Groq
+              等），只需修改 Base URL。
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>如何配置 Ollama（本地 AI）？</summary>
+          <div class="answer">
+            <p>
+              Ollama 允许你在本地运行 AI
+              模型，完全免费、无需联网、数据不离开你的电脑。
+            </p>
+            <ul>
+              <li>
+                前往 <a href="https://ollama.com">ollama.com</a> 下载安装 Ollama
+              </li>
+              <li>打开终端运行：<code>ollama pull qwen2.5:3b</code></li>
+              <li>
+                在 EvanPlayer 设置中选择 Ollama，地址默认
+                <code>http://localhost:11434</code>
+              </li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>离线词典如何安装？</summary>
+          <div class="answer">
+            <p>
+              首次查词时如果未检测到离线词典，会提示下载。点击下载按钮即可自动安装（约
+              180 MB 下载，解压后约 770 MB）。
+            </p>
+            <p>词典基于 ECDICT 开源项目，包含约 77 万英语词条。</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>我的数据存储在哪里？</summary>
+          <div class="answer">
+            <p>所有数据存储在你的 Mac 本地：</p>
+            <ul>
+              <li>
+                App Store 版本：<code
+                  >~/Library/Containers/com.evan.evanplayer/Data/.evanplayer/</code
+                >
+              </li>
+              <li>DMG 版本：<code>~/.evanplayer/</code></li>
+            </ul>
+            <p>
+              包括：SQLite
+              数据库（设置、生词本、听写记录、播放历史）和离线词典。
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>如何导出生词本？</summary>
+          <div class="answer">
+            <p>
+              在词汇标签页中点击「导出」按钮，选择保存位置即可导出为 .xlsx
+              (Excel)
+              格式。导出内容包括：单词、英文释义、中文翻译、来源视频、字幕上下文、添加日期。
+            </p>
+          </div>
+        </details>
+
+        <h2>键盘快捷键</h2>
+
+        <div style="overflow-x: auto">
+          <table
+            style="
+              width: 100%;
+              border-collapse: collapse;
+              font-size: 14px;
+              margin-top: 12px;
+            "
+          >
+            <thead>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1)">
+                <th style="text-align: left; padding: 8px 12px; color: #8b949e">
+                  快捷键
+                </th>
+                <th style="text-align: left; padding: 8px 12px; color: #8b949e">
+                  功能
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04)">
+                <td style="padding: 6px 12px">
+                  <span class="kbd">Space</span>
+                </td>
+                <td style="padding: 6px 12px; color: #8b949e">播放 / 暂停</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04)">
+                <td style="padding: 6px 12px">
+                  <span class="kbd">←</span> <span class="kbd">→</span>
+                </td>
+                <td style="padding: 6px 12px; color: #8b949e">
+                  快退 / 快进 5 秒
+                </td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04)">
+                <td style="padding: 6px 12px">
+                  <span class="kbd">↑</span> <span class="kbd">↓</span>
+                </td>
+                <td style="padding: 6px 12px; color: #8b949e">音量 ±5%</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04)">
+                <td style="padding: 6px 12px"><span class="kbd">S</span></td>
+                <td style="padding: 6px 12px; color: #8b949e">
+                  切换字幕模式（显示 → 隐藏 → 悬停）
+                </td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04)">
+                <td style="padding: 6px 12px"><span class="kbd">I</span></td>
+                <td style="padding: 6px 12px; color: #8b949e">沉浸模式</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04)">
+                <td style="padding: 6px 12px"><span class="kbd">F11</span></td>
+                <td style="padding: 6px 12px; color: #8b949e">全屏</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04)">
+                <td style="padding: 6px 12px">
+                  <span class="kbd">[</span> <span class="kbd">]</span>
+                </td>
+                <td style="padding: 6px 12px; color: #8b949e">
+                  设置 A-B 循环起点 / 终点
+                </td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04)">
+                <td style="padding: 6px 12px"><span class="kbd">\</span></td>
+                <td style="padding: 6px 12px; color: #8b949e">清除 A-B 循环</td>
+              </tr>
+              <tr>
+                <td style="padding: 6px 12px">
+                  <span class="kbd">⌘</span><span class="kbd">←</span>
+                  <span class="kbd">⌘</span><span class="kbd">→</span>
+                </td>
+                <td style="padding: 6px 12px; color: #8b949e">
+                  字幕偏移 ±100ms
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>系统要求</h2>
+        <ul>
+          <li>macOS 13 (Ventura) 或更高版本</li>
+          <li>Apple Silicon (M1/M2/M3/M4) 或 Intel Mac</li>
+          <li>至少 200 MB 可用磁盘空间（安装离线词典需额外 ~800 MB）</li>
+          <li>
+            AI 翻译功能需要网络连接（使用 OpenAI）或安装 Ollama（本地 AI）
+          </li>
+        </ul>
+
+        <h2>联系我们</h2>
+        <div class="contact-card">
+          <p>如果你遇到问题或有建议，欢迎通过以下方式联系：</p>
+          <p>
+            📧 邮箱：<a href="mailto:evanplayer.support@example.com"
+              >evanplayer_support@163.com</a
+            >
+          </p>
+          <p>
+            🐛 提交 Bug：<a
+              href="https://github.com/YourUsername/EvanPlayer/issues"
+              >GitHub Issues</a
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>© 2026 EvanPlayer. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
