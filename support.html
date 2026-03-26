@@ -14,9 +14,10 @@
         font-family:
           -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue",
           sans-serif;
-        background: #0a0e14;
+        background: #06080d;
         color: #e6edf3;
         line-height: 1.7;
+        overflow-x: hidden;
       }
       a {
         color: #58a6ff;
@@ -25,128 +26,223 @@
       a:hover {
         text-decoration: underline;
       }
-      .container {
-        max-width: 720px;
-        margin: 0 auto;
-        padding: 0 20px;
+
+      /* Background Orbs */
+      .bg-orbs {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+        overflow: hidden;
+      }
+      .bg-orbs .orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(100px);
+        opacity: 0.1;
+        animation: float 20s ease-in-out infinite;
+      }
+      .bg-orbs .orb:nth-child(1) {
+        width: 500px;
+        height: 500px;
+        background: #58a6ff;
+        top: 5%;
+        right: -10%;
+        animation-delay: 0s;
+      }
+      .bg-orbs .orb:nth-child(2) {
+        width: 400px;
+        height: 400px;
+        background: #bc8cff;
+        top: 50%;
+        left: -10%;
+        animation-delay: -8s;
+      }
+      @keyframes float {
+        0%,
+        100% {
+          transform: translate(0, 0) scale(1);
+        }
+        33% {
+          transform: translate(30px, -30px) scale(1.05);
+        }
+        66% {
+          transform: translate(-20px, 20px) scale(0.95);
+        }
       }
 
-      /* Header */
-      header {
-        padding: 40px 20px 20px;
-        text-align: center;
+      /* Nav */
+      nav.topnav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        background: rgba(6, 8, 13, 0.75);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
         border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        padding: 0 24px;
+        height: 56px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 32px;
       }
-      header h1 {
-        font-size: 28px;
+      nav.topnav .brand {
+        font-size: 17px;
+        font-weight: 700;
         background: linear-gradient(135deg, #58a6ff, #bc8cff);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        margin-bottom: 8px;
+        margin-right: auto;
       }
-      header p {
-        color: #8b949e;
-        font-size: 15px;
-      }
-      header nav {
-        margin-top: 16px;
-      }
-      header nav a {
-        margin: 0 12px;
+      nav.topnav a {
         color: #8b949e;
         font-size: 14px;
+        font-weight: 500;
+        transition: color 0.2s;
+        padding: 4px 0;
       }
-      header nav a:hover {
-        color: #58a6ff;
+      nav.topnav a:hover,
+      nav.topnav a.active {
+        color: #f0f6fc;
+        text-decoration: none;
+      }
+      nav.topnav a.active {
+        border-bottom: 2px solid #58a6ff;
       }
 
-      /* Content */
-      .content {
-        padding: 40px 0 60px;
+      /* Page Header */
+      .page-header {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        padding: 120px 20px 50px;
       }
-      .content h2 {
-        font-size: 22px;
+      .page-header::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background: radial-gradient(
+          ellipse 70% 50% at 50% 30%,
+          rgba(88, 166, 255, 0.06),
+          transparent 70%
+        );
+      }
+      .page-header h1 {
+        font-size: 40px;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+        background: linear-gradient(
+          135deg,
+          #f0f6fc 0%,
+          #58a6ff 60%,
+          #bc8cff 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 10px;
+      }
+      .page-header p {
+        color: #8b949e;
+        font-size: 16px;
+      }
+
+      /* Container */
+      .container {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 0 24px;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Section */
+      .section {
+        padding: 48px 0;
+      }
+      .section + .section {
+        border-top: 1px solid rgba(255, 255, 255, 0.04);
+      }
+      .section-title {
+        font-size: 26px;
+        font-weight: 700;
         color: #f0f6fc;
-        margin: 40px 0 16px;
-        padding-bottom: 8px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        margin-bottom: 28px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
       }
-      .content h2:first-child {
-        margin-top: 0;
+      .section-title .st-icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        background: rgba(88, 166, 255, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
       }
-      .content h3 {
-        font-size: 17px;
+
+      /* Tutorial Steps */
+      .tutorial-step {
+        margin-bottom: 32px;
+      }
+      .tutorial-step h3 {
+        font-size: 18px;
+        font-weight: 600;
         color: #c9d1d9;
-        margin: 24px 0 8px;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
       }
-      .content p {
+      .tutorial-step h3 .step-num {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #58a6ff, #7c6bff);
+        color: #fff;
+        font-size: 13px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .tutorial-step p {
         color: #8b949e;
         font-size: 15px;
+        margin-bottom: 10px;
+      }
+      .tutorial-step ul {
+        list-style: none;
         margin-bottom: 12px;
       }
-      .content ul {
-        list-style: none;
-        margin-bottom: 16px;
-      }
-      .content ul li {
-        padding: 6px 0;
+      .tutorial-step ul li {
+        padding: 5px 0 5px 20px;
         color: #8b949e;
         font-size: 15px;
-        padding-left: 20px;
         position: relative;
       }
-      .content ul li::before {
+      .tutorial-step ul li::before {
         content: "•";
         color: #58a6ff;
         position: absolute;
         left: 0;
       }
-      .content code {
-        background: rgba(255, 255, 255, 0.06);
-        padding: 2px 6px;
-        border-radius: 4px;
-        font-size: 13px;
-        color: #c9d1d9;
-      }
-      .contact-card {
-        background: rgba(255, 255, 255, 0.04);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 12px;
-        padding: 24px;
-        margin-top: 16px;
-      }
-      .contact-card p {
-        margin-bottom: 8px;
-      }
-
-      .faq-item {
-        margin-bottom: 24px;
-      }
-      .faq-item summary {
-        font-size: 16px;
-        color: #c9d1d9;
-        cursor: pointer;
-        padding: 8px 0;
-        font-weight: 600;
-      }
-      .faq-item summary:hover {
-        color: #58a6ff;
-      }
-      .faq-item .answer {
-        padding: 8px 0 0 16px;
-        color: #8b949e;
-        font-size: 15px;
-      }
-      .faq-item .answer p {
-        margin-bottom: 8px;
-      }
 
       .tip-box {
-        background: rgba(88, 166, 255, 0.06);
-        border: 1px solid rgba(88, 166, 255, 0.15);
-        border-radius: 10px;
-        padding: 16px 20px;
-        margin: 16px 0;
+        background: rgba(88, 166, 255, 0.04);
+        border: 1px solid rgba(88, 166, 255, 0.12);
+        border-radius: 12px;
+        padding: 14px 18px;
+        margin: 12px 0;
         font-size: 14px;
         color: #8b949e;
       }
@@ -154,216 +250,465 @@
         color: #58a6ff;
       }
 
+      code {
+        background: rgba(255, 255, 255, 0.06);
+        padding: 2px 7px;
+        border-radius: 5px;
+        font-size: 13px;
+        color: #c9d1d9;
+      }
+
+      /* Operation Cards */
+      .op-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        margin-bottom: 24px;
+      }
+      .op-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 14px;
+        padding: 18px 16px;
+        transition:
+          border-color 0.2s,
+          transform 0.2s;
+      }
+      .op-card:hover {
+        border-color: rgba(88, 166, 255, 0.2);
+        transform: translateY(-2px);
+      }
+      .op-card .op-label {
+        font-size: 14px;
+        font-weight: 600;
+        color: #c9d1d9;
+        margin-bottom: 4px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .op-card .op-desc {
+        font-size: 13px;
+        color: #7d8590;
+        line-height: 1.5;
+      }
+
+      /* FAQ */
+      .faq-item {
+        margin-bottom: 12px;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 14px;
+        overflow: hidden;
+        transition: border-color 0.2s;
+      }
+      .faq-item:hover {
+        border-color: rgba(255, 255, 255, 0.1);
+      }
+      .faq-item summary {
+        font-size: 15px;
+        color: #c9d1d9;
+        cursor: pointer;
+        padding: 16px 20px;
+        font-weight: 600;
+        list-style: none;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: color 0.2s;
+      }
+      .faq-item summary::-webkit-details-marker {
+        display: none;
+      }
+      .faq-item summary::before {
+        content: "+";
+        width: 22px;
+        height: 22px;
+        border-radius: 6px;
+        background: rgba(88, 166, 255, 0.1);
+        color: #58a6ff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        font-weight: 400;
+        flex-shrink: 0;
+        transition: transform 0.2s;
+      }
+      .faq-item[open] summary::before {
+        content: "−";
+        transform: rotate(0deg);
+      }
+      .faq-item summary:hover {
+        color: #58a6ff;
+      }
+      .faq-item .answer {
+        padding: 0 20px 18px 52px;
+        color: #8b949e;
+        font-size: 14px;
+        line-height: 1.7;
+      }
+      .faq-item .answer p {
+        margin-bottom: 8px;
+      }
+      .faq-item .answer ul {
+        list-style: none;
+        margin-bottom: 10px;
+      }
+      .faq-item .answer ul li {
+        padding: 3px 0 3px 18px;
+        position: relative;
+        font-size: 14px;
+      }
+      .faq-item .answer ul li::before {
+        content: "•";
+        color: #58a6ff;
+        position: absolute;
+        left: 0;
+      }
+
       .step-list {
         counter-reset: step;
         list-style: none;
-        margin-bottom: 16px;
+        margin-bottom: 12px;
       }
       .step-list li {
-        padding: 8px 0 8px 36px;
+        padding: 6px 0 6px 36px;
         position: relative;
         color: #8b949e;
-        font-size: 15px;
+        font-size: 14px;
       }
       .step-list li::before {
         counter-increment: step;
         content: counter(step);
         position: absolute;
         left: 0;
-        width: 24px;
-        height: 24px;
-        background: rgba(88, 166, 255, 0.15);
+        width: 22px;
+        height: 22px;
+        background: rgba(88, 166, 255, 0.12);
         color: #58a6ff;
         border-radius: 50%;
         text-align: center;
-        line-height: 24px;
-        font-size: 13px;
+        line-height: 22px;
+        font-size: 12px;
         font-weight: 600;
+      }
+
+      /* System Req */
+      .req-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+      }
+      .req-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 14px;
+        padding: 22px 18px;
+        text-align: center;
+      }
+      .req-card .req-icon {
+        font-size: 28px;
+        margin-bottom: 10px;
+      }
+      .req-card h4 {
+        font-size: 15px;
+        color: #c9d1d9;
+        margin-bottom: 10px;
+      }
+      .req-card ul {
+        list-style: none;
+      }
+      .req-card ul li {
+        font-size: 13px;
+        color: #7d8590;
+        padding: 3px 0;
+      }
+
+      /* Contact */
+      .contact-card {
+        background: linear-gradient(
+          135deg,
+          rgba(88, 166, 255, 0.06),
+          rgba(188, 140, 255, 0.04)
+        );
+        border: 1px solid rgba(88, 166, 255, 0.12);
+        border-radius: 16px;
+        padding: 28px 32px;
+        text-align: center;
+      }
+      .contact-card p {
+        color: #8b949e;
+        font-size: 15px;
+        margin-bottom: 8px;
+      }
+      .contact-card .email-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 17px;
+        font-weight: 600;
+        color: #58a6ff;
       }
 
       /* Footer */
       footer {
+        position: relative;
+        z-index: 1;
         text-align: center;
-        padding: 30px 20px;
+        padding: 40px 20px;
         color: #484f58;
         font-size: 13px;
         border-top: 1px solid rgba(255, 255, 255, 0.06);
       }
 
-      @media (max-width: 600px) {
-        header h1 {
-          font-size: 22px;
+      /* Fade-in */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition:
+          opacity 0.5s ease,
+          transform 0.5s ease;
+      }
+      .fade-in.visible {
+        opacity: 1;
+        transform: none;
+      }
+
+      @media (max-width: 640px) {
+        .page-header h1 {
+          font-size: 28px;
+        }
+        .op-grid {
+          grid-template-columns: 1fr;
+        }
+        .req-grid {
+          grid-template-columns: 1fr;
+        }
+        nav.topnav .brand {
+          display: none;
         }
       }
     </style>
   </head>
   <body>
-    <header>
-      <h1>EvanPlayer 支持与帮助</h1>
-      <p>AI 智能英语学习视频播放器 &middot; macOS / iOS / Android</p>
-      <nav>
-        <a href="index.html">首页</a>
-        <a href="support.html">帮助</a>
-        <a href="privacy.html">隐私政策</a>
-      </nav>
-    </header>
+    <div class="bg-orbs">
+      <div class="orb"></div>
+      <div class="orb"></div>
+    </div>
+
+    <nav class="topnav">
+      <span class="brand">EvanPlayer</span>
+      <a href="index.html">首页</a>
+      <a href="support.html" class="active">帮助</a>
+      <a href="privacy.html">隐私政策</a>
+    </nav>
+
+    <div class="page-header">
+      <h1>支持与帮助</h1>
+      <p>快速入门、操作指南与常见问题</p>
+    </div>
 
     <div class="container">
-      <div class="content">
-        <!-- ═══════════════════════════════════════════════ -->
-        <h2>快速入门</h2>
-
-        <h3>1. 打开视频</h3>
-        <p>
-          点击工具栏左侧 📹 按钮选择视频文件。支持
-          MP4、MKV、AVI、MOV、WEBM、FLV、WMV、M4V 等几乎所有格式。
-        </p>
-        <div class="tip-box">
-          <strong>💡 macOS 用户：</strong
-          >也可以直接将视频文件拖拽到播放界面打开。
+      <!-- ══════════ Quick Start ══════════ -->
+      <div class="section fade-in">
+        <div class="section-title">
+          <div class="st-icon">🚀</div>
+          快速入门
         </div>
 
-        <h3>2. 加载字幕</h3>
-        <p>
-          EvanPlayer 会自动检测视频同目录下的同名字幕文件（.srt / .vtt / .ass /
-          .ssa）并自动加载。MP4/MKV 中的内嵌字幕也会被自动提取。
-        </p>
-        <p>如需手动加载字幕：点击工具栏 📝 字幕按钮，选择字幕文件即可。</p>
-        <div class="tip-box">
-          <strong>💡 双语字幕：</strong>点击工具栏 🌐
-          翻译字幕按钮，可以额外加载一份翻译字幕（如中文
-          .srt）。点击句子时会自动匹配双语对照，无需消耗 AI 额度。
+        <div class="tutorial-step">
+          <h3><span class="step-num">1</span> 打开视频</h3>
+          <p>
+            点击工具栏左侧 📹 按钮选择视频文件。支持
+            MP4、MKV、AVI、MOV、WEBM、FLV、WMV、M4V 等几乎所有格式。
+          </p>
+          <div class="tip-box">
+            <strong>💡 macOS 用户：</strong
+            >也可以直接将视频文件拖拽到播放界面打开。
+          </div>
         </div>
 
-        <h3>3. 点击查词</h3>
-        <p>
-          视频播放时，点击字幕中的任意单词即可弹出释义窗口，显示离线词典释义（音标、英英释义、中文翻译、考试标签）。
-        </p>
-        <p>
-          长按字幕文本可以获取整句翻译。翻译会自动按优先级匹配来源：双语字幕 →
-          Google 翻译 → 离线词典逐词释义 → AI 深度分析。
-        </p>
-
-        <h3>4. AI 翻译与分析</h3>
-        <p>
-          在释义窗口中点击「AI 智能翻译」按钮，可获取 AI
-          生成的英英释义、中英对照翻译和例句。需先在设置中配置 AI 服务。
-        </p>
-        <p>EvanPlayer 支持两种 AI 模式：</p>
-        <ul>
-          <li>
-            <strong>托管模式（推荐）</strong>：使用 EvanPlayer
-            服务器中转，无需自行申请 API Key，按额度使用。
-          </li>
-          <li>
-            <strong>自定义模式</strong>：填入你自己的 OpenAI API Key（或
-            DeepSeek 等兼容 API），直连 AI 服务。也可使用 Ollama 本地 AI。
-          </li>
-        </ul>
-
-        <h3>5. 听写练习</h3>
-        <p>
-          在右侧面板切换到「听写」标签页。视频将自动循环当前字幕句，你可以在输入框中键入听到的内容，然后点击「检查」查看逐词对比结果：
-        </p>
-        <ul>
-          <li><span style="color: #34d399">■ 绿色</span> = 正确</li>
-          <li><span style="color: #f87171">■ 红色</span> = 错误 / 拼写错误</li>
-          <li><span style="color: #fb923c">■ 橙色</span> = 遗漏的单词</li>
-          <li><span style="color: #6b7280">■ 灰色</span> = 多余的单词</li>
-        </ul>
-        <p>
-          支持渐进提示：第一次提示显示首字母，第二次显示中文释义，逐步帮你回忆。错词可一键加入生词本。
-        </p>
-
-        <h3>6. 生词本与间隔复习</h3>
-        <p>
-          查词后点击「保存到生词本」，词汇将记录来源视频和字幕上下文。在「词汇」标签页中可查看所有保存的单词。
-        </p>
-        <p>
-          点击「复习」进入拼写测验模式（每组 20 词），基于 SM-2
-          间隔重复算法安排复习频率。四级掌握度：
-        </p>
-        <ul>
-          <li>🆕 新词 — 刚加入，尚未复习</li>
-          <li>📗 学习中 — 开始学习，需要巩固</li>
-          <li>📘 复习中 — 已掌握基本含义，定期复习</li>
-          <li>✅ 已掌握 — 可以长期记忆</li>
-        </ul>
-        <p>
-          生词本支持导出为 Excel (.xlsx) 或 CSV 格式，方便在其他工具中使用。
-        </p>
-
-        <!-- ═══════════════════════════════════════════════ -->
-        <h2>操作指南</h2>
-
-        <h3>播放控制</h3>
-        <ul>
-          <li>
-            <strong>播放/暂停</strong>：点击播放按钮，或在移动端双击视频区域
-          </li>
-          <li>
-            <strong>快进/快退</strong
-            >：拖动进度条，或点击上一句/下一句按钮跳转字幕
-          </li>
-          <li>
-            <strong>变速播放</strong>：点击控制栏速度按钮（如 1.0x），选择 0.5x
-            – 2.0x
-          </li>
-          <li><strong>音量调节</strong>：拖动控制栏音量滑块，或点击静音按钮</li>
-          <li><strong>全屏模式</strong>：点击控制栏全屏按钮进入沉浸式全屏</li>
-        </ul>
-
-        <h3>字幕功能</h3>
-        <ul>
-          <li>
-            <strong>字幕显示模式</strong>：点击控制栏字幕按钮切换三种模式 — 显示
-            / 隐藏 / 悬停显示（鼠标移到字幕区域才显示）
-          </li>
-          <li>
-            <strong>字幕遮罩</strong>：点击控制栏 CC
-            按钮开启底部黑色遮罩条，遮挡视频中的硬编码字幕。上下拖拽遮罩顶部手柄可调整遮罩高度
-          </li>
-          <li>
-            <strong>字幕搜索</strong
-            >：在右侧字幕列表顶部输入关键词搜索，快速定位到目标字幕
-          </li>
-          <li>
-            <strong>跳转到字幕</strong
-            >：点击右侧字幕列表中的任意一句，视频自动跳转到该字幕时间点
-          </li>
-        </ul>
-
-        <h3>A-B 循环</h3>
-        <p>
-          在控制栏点击循环按钮 🔁，将自动对当前字幕设置 A-B
-          循环。视频播放到终点时自动跳回起点，适合反复精听某一句。再次点击循环按钮取消循环。
-        </p>
-        <div class="tip-box">
-          <strong>💡 提示：</strong>进入听写模式时，A-B
-          循环会自动设置到当前字幕句上，退出听写模式时自动清除。
+        <div class="tutorial-step">
+          <h3><span class="step-num">2</span> 加载字幕</h3>
+          <p>
+            EvanPlayer 会自动检测视频同目录下的同名字幕文件（.srt / .vtt / .ass
+            / .ssa）并自动加载。MP4/MKV 中的内嵌字幕也会自动提取。
+          </p>
+          <p>如需手动加载字幕：点击工具栏 📝 字幕按钮，选择字幕文件即可。</p>
+          <div class="tip-box">
+            <strong>💡 双语字幕：</strong>点击工具栏 🌐
+            翻译字幕按钮，可以额外加载一份翻译字幕（如中文
+            .srt）。点击句子时自动匹配双语对照，无需消耗 AI 额度。
+          </div>
         </div>
 
-        <h3>自动续播</h3>
-        <p>
-          EvanPlayer 每 5
-          秒自动保存播放位置。下次打开同一个视频时，会自动恢复到上次的播放位置并显示提示。可在设置中关闭此功能。
-        </p>
+        <div class="tutorial-step">
+          <h3><span class="step-num">3</span> 点击查词</h3>
+          <p>
+            视频播放时，点击字幕中的任意单词即可弹出释义窗口，显示离线词典释义（音标、英英释义、中文翻译、考试标签）。
+          </p>
+          <p>
+            长按字幕文本可获取整句翻译。翻译自动按优先级匹配：双语字幕 → Google
+            翻译 → 离线词典逐词释义 → AI 深度分析。
+          </p>
+        </div>
 
-        <!-- ═══════════════════════════════════════════════ -->
-        <h2>常见问题</h2>
+        <div class="tutorial-step">
+          <h3><span class="step-num">4</span> AI 翻译与分析</h3>
+          <p>
+            在释义窗口中点击「AI 智能翻译」按钮，可获取 AI
+            生成的英英释义、中英对照翻译和例句。需先在设置中配置 AI 服务。
+          </p>
+          <p>EvanPlayer 支持两种 AI 模式：</p>
+          <ul>
+            <li>
+              <strong>托管模式（推荐）</strong>：使用 EvanPlayer
+              服务器中转，无需自行申请 API Key，按额度使用。
+            </li>
+            <li>
+              <strong>自定义模式</strong>：填入你自己的 OpenAI API Key（或
+              DeepSeek 等兼容 API），直连 AI 服务。也可使用 Ollama 本地 AI。
+            </li>
+          </ul>
+        </div>
+
+        <div class="tutorial-step">
+          <h3><span class="step-num">5</span> 听写练习</h3>
+          <p>
+            在右侧面板切换到「听写」标签页。视频将自动循环当前字幕句，在输入框中键入听到的内容，然后点击「检查」查看逐词对比结果：
+          </p>
+          <ul>
+            <li><span style="color: #34d399">■ 绿色</span> = 正确</li>
+            <li>
+              <span style="color: #f87171">■ 红色</span> = 错误 / 拼写错误
+            </li>
+            <li><span style="color: #fb923c">■ 橙色</span> = 遗漏的单词</li>
+            <li><span style="color: #6b7280">■ 灰色</span> = 多余的单词</li>
+          </ul>
+          <p>
+            支持渐进提示：第一次提示显示首字母，第二次显示中文释义，逐步帮你回忆。错词可一键加入生词本。
+          </p>
+        </div>
+
+        <div class="tutorial-step">
+          <h3><span class="step-num">6</span> 生词本与间隔复习</h3>
+          <p>
+            查词后点击「保存到生词本」，词汇将记录来源视频和字幕上下文。在「词汇」标签页中可查看所有保存的单词。
+          </p>
+          <p>
+            点击「复习」进入拼写测验模式（每组 20 词），基于 SM-2
+            间隔重复算法安排复习频率。四级掌握度：
+          </p>
+          <ul>
+            <li>🆕 新词 — 刚加入，尚未复习</li>
+            <li>📗 学习中 — 开始学习，需要巩固</li>
+            <li>📘 复习中 — 已掌握基本含义，定期复习</li>
+            <li>✅ 已掌握 — 可以长期记忆</li>
+          </ul>
+          <p>
+            生词本支持导出为 Excel (.xlsx) 或 CSV 格式，方便在其他工具中使用。
+          </p>
+        </div>
+      </div>
+
+      <!-- ══════════ Operations ══════════ -->
+      <div class="section fade-in">
+        <div class="section-title">
+          <div class="st-icon">🎮</div>
+          操作指南
+        </div>
+
+        <h3
+          style="
+            font-size: 17px;
+            color: #c9d1d9;
+            margin-bottom: 14px;
+            font-weight: 600;
+          "
+        >
+          播放控制
+        </h3>
+        <div class="op-grid">
+          <div class="op-card">
+            <div class="op-label">⏯ 播放 / 暂停</div>
+            <div class="op-desc">点击播放按钮，移动端双击视频区域</div>
+          </div>
+          <div class="op-card">
+            <div class="op-label">⏩ 快进 / 快退</div>
+            <div class="op-desc">拖动进度条，或点击上一句/下一句按钮</div>
+          </div>
+          <div class="op-card">
+            <div class="op-label">🔄 变速播放</div>
+            <div class="op-desc">点击速度按钮，选择 0.5x – 2.0x</div>
+          </div>
+          <div class="op-card">
+            <div class="op-label">🔊 音量调节</div>
+            <div class="op-desc">拖动音量滑块，或点击静音按钮</div>
+          </div>
+          <div class="op-card">
+            <div class="op-label">🔁 A-B 循环</div>
+            <div class="op-desc">点击循环按钮锁定当前字幕句反复精听</div>
+          </div>
+          <div class="op-card">
+            <div class="op-label">🖥 全屏模式</div>
+            <div class="op-desc">点击全屏按钮进入沉浸式播放</div>
+          </div>
+        </div>
+
+        <h3
+          style="
+            font-size: 17px;
+            color: #c9d1d9;
+            margin: 24px 0 14px;
+            font-weight: 600;
+          "
+        >
+          字幕功能
+        </h3>
+        <div class="op-grid">
+          <div class="op-card">
+            <div class="op-label">👁 显示模式</div>
+            <div class="op-desc">三种模式切换：显示 / 隐藏 / 悬停显示</div>
+          </div>
+          <div class="op-card">
+            <div class="op-label">🎭 字幕遮罩</div>
+            <div class="op-desc">CC 按钮开启遮罩，拖拽调整高度 5%–50%</div>
+          </div>
+          <div class="op-card">
+            <div class="op-label">🔍 字幕搜索</div>
+            <div class="op-desc">字幕列表顶部输入关键词快速定位</div>
+          </div>
+          <div class="op-card">
+            <div class="op-label">📌 字幕跳转</div>
+            <div class="op-desc">点击字幕列表任意一句跳转到该时间点</div>
+          </div>
+        </div>
+
+        <div class="tip-box">
+          <strong>💡 听写小技巧：</strong>进入听写模式时 A-B
+          循环会自动设置到当前字幕句，退出时自动清除。EvanPlayer 每 5
+          秒自动保存播放位置，下次打开同一视频自动恢复。
+        </div>
+      </div>
+
+      <!-- ══════════ FAQ ══════════ -->
+      <div class="section fade-in">
+        <div class="section-title">
+          <div class="st-icon">❓</div>
+          常见问题
+        </div>
 
         <details class="faq-item">
           <summary>视频无法播放？</summary>
           <div class="answer">
             <p>
               EvanPlayer 使用 libmpv
-              引擎，支持几乎所有常见视频格式。如果遇到无法播放的情况：
+              引擎，支持几乎所有常见视频格式。如果遇到无法播放：
             </p>
             <ul>
               <li>确认文件未损坏 — 尝试用其他播放器打开</li>
-              <li>
-                确认文件格式受支持（MP4、MKV、AVI、MOV、WEBM、FLV、WMV 等）
-              </li>
+              <li>确认格式受支持（MP4、MKV、AVI、MOV、WEBM、FLV、WMV 等）</li>
               <li>Android 用户：如果频繁闪退，尝试重启 App</li>
             </ul>
           </div>
@@ -374,7 +719,7 @@
           <div class="answer">
             <p>
               EvanPlayer 已内置 UTF-8 和 UTF-16
-              自动检测。如果仍然乱码，可能是字幕文件使用了其他编码（如
+              自动检测。如果仍然乱码，可能是字幕使用了其他编码（如
               GBK）。请用文本编辑器将字幕文件另存为
               <strong>UTF-8</strong> 编码后重新加载。
             </p>
@@ -386,10 +731,10 @@
           <div class="answer">
             <p>
               Mac App Store
-              版本运行在沙箱中，无法自动读取视频同目录的其他文件。当自动加载字幕失败时，会提示「字幕文件无法访问，请授权文件夹访问权限」。
+              版运行在沙箱中，无法自动读取视频同目录的其他文件。当自动加载字幕失败时会提示授权。
             </p>
             <p>
-              解决方法：点击提示中的「授权访问」按钮，选择视频所在的文件夹并授权即可。之后同一文件夹下的字幕文件将可正常加载。
+              解决方法：点击提示中的「授权访问」按钮，选择视频所在文件夹并授权即可。之后同一文件夹下的字幕文件将可正常加载。
             </p>
           </div>
         </details>
@@ -414,8 +759,8 @@
               <li>点击「测试连接」验证配置</li>
             </ol>
             <p>
-              你也可以使用任何 OpenAI 兼容的 API 服务（如 DeepSeek、Groq
-              等），只需修改 Base URL 和模型名称。
+              也可以使用 OpenAI 兼容 API（DeepSeek、Groq 等），只需修改 Base URL
+              和模型名称。
             </p>
           </div>
         </details>
@@ -424,7 +769,7 @@
           <summary>如何配置 Ollama（本地 AI，完全免费）？</summary>
           <div class="answer">
             <p>
-              Ollama 允许你在本地运行 AI
+              Ollama 允许在本地运行 AI
               模型，完全免费、无需联网、数据不离开你的电脑。
             </p>
             <ol class="step-list">
@@ -440,9 +785,8 @@
             </ol>
             <div class="tip-box">
               <strong>💡 模型推荐：</strong
-              ><code>qwen2.5:3b</code> 适合大多数电脑。如果你有 Apple M
-              系列芯片或独立显卡，可以尝试
-              <code>qwen2.5:7b</code> 获取更高质量的翻译。
+              ><code>qwen2.5:3b</code> 适合大多数电脑。Apple M
+              芯片或独显用户可以尝试 <code>qwen2.5:7b</code> 获取更高质量翻译。
             </div>
           </div>
         </details>
@@ -451,8 +795,8 @@
           <summary>离线词典如何安装？</summary>
           <div class="answer">
             <p>
-              进入设置页面，点击「下载离线词典」按钮即可自动下载安装（约 50MB
-              压缩包）。词典基于 ECDICT 开源项目，包含约 77 万英语词条。
+              进入设置页面，点击「下载离线词典」按钮即可自动下载（约
+              50MB）。词典基于 ECDICT 开源项目，含约 77 万词条。
             </p>
             <p>
               下载源优先使用阿里云
@@ -467,7 +811,7 @@
             <p>所有数据存储在本地设备上：</p>
             <ul>
               <li>
-                <strong>macOS (App Store)</strong>：<code
+                <strong>macOS</strong>：<code
                   >~/Library/Containers/com.evan.evanplayer/Data/.evanplayer/</code
                 >
               </li>
@@ -478,9 +822,9 @@
               <li><strong>Android</strong>：App 私有存储目录</li>
             </ul>
             <p>
-              包括：SQLite
+              包括 SQLite
               数据库（设置、生词本、听写记录、播放历史）和离线词典。卸载 App
-              将自动删除所有数据。
+              自动删除所有数据。
             </p>
           </div>
         </details>
@@ -499,50 +843,66 @@
           <summary>如何使用字幕遮罩功能？</summary>
           <div class="answer">
             <p>
-              有些视频的字幕是硬编码在画面中的，无法提取。字幕遮罩功能可以在视频底部显示一条黑色遮罩条来遮挡这些硬字幕：
+              有些视频的字幕是硬编码在画面中的，字幕遮罩可以在视频底部显示黑色遮罩条来遮挡：
             </p>
             <ol class="step-list">
               <li>点击控制栏的 CC 遮罩按钮开启遮罩</li>
-              <li>遮罩顶部有一个白色拖拽手柄，上下拖动调整遮罩高度</li>
-              <li>高度可在视频的 5%–50% 之间调整，匹配不同视频的字幕位置</li>
+              <li>遮罩顶部有拖拽手柄，上下拖动调整高度</li>
+              <li>高度可在 5%–50% 之间调整，匹配不同视频的字幕位置</li>
               <li>再次点击 CC 按钮关闭遮罩</li>
             </ol>
           </div>
         </details>
+      </div>
 
-        <!-- ═══════════════════════════════════════════════ -->
-        <h2>系统要求</h2>
+      <!-- ══════════ System Requirements ══════════ -->
+      <div class="section fade-in">
+        <div class="section-title">
+          <div class="st-icon">⚙️</div>
+          系统要求
+        </div>
+        <div class="req-grid">
+          <div class="req-card">
+            <div class="req-icon">💻</div>
+            <h4>macOS</h4>
+            <ul>
+              <li>macOS 13 (Ventura)+</li>
+              <li>Apple Silicon 或 Intel</li>
+              <li>200 MB 磁盘空间</li>
+            </ul>
+          </div>
+          <div class="req-card">
+            <div class="req-icon">📱</div>
+            <h4>iOS</h4>
+            <ul>
+              <li>iOS 16.0+</li>
+              <li>iPhone 或 iPad</li>
+              <li>200 MB 磁盘空间</li>
+            </ul>
+          </div>
+          <div class="req-card">
+            <div class="req-icon">🤖</div>
+            <h4>Android</h4>
+            <ul>
+              <li>Android 7.0 (API 24)+</li>
+              <li>ARM64 架构</li>
+              <li>300 MB 磁盘空间</li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-        <h3>macOS</h3>
-        <ul>
-          <li>macOS 13 (Ventura) 或更高版本</li>
-          <li>Apple Silicon (M1/M2/M3/M4) 或 Intel Mac</li>
-          <li>至少 200 MB 可用磁盘空间（安装离线词典需额外约 200 MB）</li>
-        </ul>
-
-        <h3>iOS</h3>
-        <ul>
-          <li>iOS 16.0 或更高版本</li>
-          <li>iPhone 或 iPad</li>
-          <li>至少 200 MB 可用磁盘空间</li>
-        </ul>
-
-        <h3>Android</h3>
-        <ul>
-          <li>Android 7.0 (API 24) 或更高版本</li>
-          <li>ARM64 架构（绝大多数现代 Android 设备）</li>
-          <li>至少 300 MB 可用磁盘空间</li>
-        </ul>
-
-        <!-- ═══════════════════════════════════════════════ -->
-        <h2>联系我们</h2>
+      <!-- ══════════ Contact ══════════ -->
+      <div class="section fade-in">
+        <div class="section-title">
+          <div class="st-icon">💬</div>
+          联系我们
+        </div>
         <div class="contact-card">
           <p>如果你遇到问题或有建议，欢迎通过以下方式联系：</p>
-          <p>
-            📧 邮箱：<a href="mailto:evanplayer_support@163.com"
-              >evanplayer_support@163.com</a
-            >
-          </p>
+          <a class="email-link" href="mailto:evanplayer_support@163.com"
+            >📧 evanplayer_support@163.com</a
+          >
         </div>
       </div>
     </div>
@@ -550,5 +910,22 @@
     <footer>
       <p>&copy; 2026 EvanPlayer. All rights reserved.</p>
     </footer>
+
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e, i) => {
+            if (e.isIntersecting) {
+              setTimeout(() => e.target.classList.add("visible"), i * 80);
+              observer.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.1 },
+      );
+      document
+        .querySelectorAll(".fade-in")
+        .forEach((el) => observer.observe(el));
+    </script>
   </body>
 </html>
