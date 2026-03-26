@@ -61,19 +61,29 @@
         color: #8b949e;
         margin-bottom: 30px;
       }
+      .hero .platforms {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
       .hero .cta {
         display: inline-block;
-        padding: 14px 36px;
+        padding: 14px 28px;
         background: linear-gradient(135deg, #58a6ff, #bc8cff);
         color: #fff;
         border-radius: 12px;
-        font-size: 18px;
+        font-size: 16px;
         font-weight: 600;
         transition: opacity 0.2s;
       }
       .hero .cta:hover {
         opacity: 0.9;
         text-decoration: none;
+      }
+      .hero .cta.secondary {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.15);
       }
 
       /* Container */
@@ -184,6 +194,10 @@
         .feature-grid {
           grid-template-columns: 1fr;
         }
+        .hero .platforms {
+          flex-direction: column;
+          align-items: center;
+        }
       }
     </style>
   </head>
@@ -194,9 +208,19 @@
       <p class="tagline">
         AI 智能英语学习视频播放器<br />把每一段视频变成你的私人英语课堂
       </p>
-      <a href="https://apps.apple.com/app/evanplayer/id6760929200" class="cta"
-        >在 Mac App Store 下载</a
-      >
+      <div class="platforms">
+        <a href="https://apps.apple.com/app/evanplayer/id6760929200" class="cta"
+          >Mac App Store</a
+        >
+        <a href="https://apps.apple.com/app/evanplayer/id6760929200" class="cta"
+          >App Store (iOS)</a
+        >
+        <a
+          href="https://evanplayer.oss-cn-guangzhou.aliyuncs.com/EvanPlayer.apk"
+          class="cta secondary"
+          >Android APK 下载</a
+        >
+      </div>
     </section>
 
     <section class="features">
@@ -207,25 +231,26 @@
             <div class="icon">🎬</div>
             <h3>全格式视频播放</h3>
             <p>
-              支持 MP4、MKV、AVI、MOV、WEBM
+              基于 libmpv 引擎，支持 MP4、MKV、AVI、MOV、WEBM、FLV、WMV、M4V
               等几乎所有视频格式。变速播放（0.5x–2.0x）、A-B
-              循环、自动记忆播放位置。
+              循环、自动记忆播放位置、沉浸式全屏。
             </p>
           </div>
           <div class="feature-card">
             <div class="icon">📝</div>
             <h3>智能字幕系统</h3>
             <p>
-              支持 SRT / VTT / ASS
-              外挂字幕和内嵌字幕自动提取。三种显示模式：显示、隐藏、悬停显示。字幕可拖拽、全文搜索。
+              支持 SRT / VTT / ASS / SSA 外挂字幕和 MP4/MKV
+              内嵌字幕自动提取。三种显示模式：显示、隐藏、悬停显示。支持加载双语翻译字幕、字幕遮罩（隐藏硬字幕）。
             </p>
           </div>
           <div class="feature-card">
             <div class="icon">🤖</div>
-            <h3>AI 点击查词翻译</h3>
+            <h3>AI 多引擎翻译</h3>
             <p>
-              点击字幕任意单词即刻查词。Shift+点击选取短语整句翻译。支持
-              OpenAI（GPT-4o）和 Ollama 本地 AI 双引擎。
+              点击字幕任意单词即刻查词。整句翻译自动匹配最佳来源：双语字幕 →
+              Google 翻译 → 离线词典逐词释义 → AI 深度分析。支持 OpenAI / Ollama
+              本地 AI / 兼容 API（DeepSeek 等）。
             </p>
           </div>
           <div class="feature-card">
@@ -233,23 +258,45 @@
             <h3>77 万词条离线词典</h3>
             <p>
               内置 ECDICT 离线词典，音标、英英释义、中文翻译、考试标签（四六级 /
-              考研 / 雅思 / 托福 / GRE）一应俱全。
+              考研 / 雅思 / 托福 / GRE）一应俱全。无需联网，随时查词。
             </p>
           </div>
           <div class="feature-card">
             <div class="icon">✍️</div>
             <h3>听写练习 + AI 批改</h3>
             <p>
-              逐句听写同步视频播放。逐词对比批改：正确（绿）、错误（红）、遗漏（黄）。支持
-              AI 反馈分析，错词一键加入生词本。
+              逐句听写同步视频播放，自动循环当前字幕。逐词对比批改：正确（绿）、错误（红）、遗漏（橙）、多余（灰）。渐进提示系统，错词一键加入生词本。
             </p>
           </div>
           <div class="feature-card">
             <div class="icon">🧠</div>
             <h3>间隔重复生词本</h3>
             <p>
-              SM-2 算法科学安排复习。四级掌握度：新词→学习中→复习中→已掌握。TTS
-              朗读拼写测验。一键导出 Excel。
+              SM-2 算法科学安排复习。四级掌握度：新词 → 学习中 → 复习中 →
+              已掌握。TTS 朗读拼写测验（每组 20 词）。支持导出 Excel / CSV。
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="icon">🌐</div>
+            <h3>双语字幕对照</h3>
+            <p>
+              支持加载翻译字幕（如中文字幕），与英文字幕同步对照显示。点击整句时自动匹配翻译字幕，无需消耗
+              AI 额度即可获取翻译。
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="icon">🎭</div>
+            <h3>字幕遮罩</h3>
+            <p>
+              一键开启底部黑色遮罩条，遮挡视频中的硬编码字幕。可拖拽调整遮罩高度（5%–50%），精准匹配不同视频的字幕位置。
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="icon">📱</div>
+            <h3>三端同步体验</h3>
+            <p>
+              支持 macOS、iOS（iPhone / iPad）和 Android
+              三个平台。统一的暗色毛玻璃主题，中英双语界面一键切换。
             </p>
           </div>
         </div>
@@ -265,15 +312,15 @@
         <ul class="highlight-list">
           <li>
             <span class="check">✓</span> 沉浸式学习 —
-            看视频时随时查词翻译，不打断观看体验
+            看视频时随时点击单词查词翻译，不打断观看体验
           </li>
           <li>
-            <span class="check">✓</span> AI 加持 — OpenAI 和本地 Ollama
-            双模型，智能翻译双语释义
+            <span class="check">✓</span> AI 多引擎 — OpenAI / Ollama / DeepSeek
+            / Google 翻译，按需选择
           </li>
           <li>
-            <span class="check">✓</span> 科学记忆 — SM-2
-            间隔重复算法，告别死记硬背
+            <span class="check">✓</span> 科学记忆 — SM-2 间隔重复算法 +
+            拼写测验，告别死记硬背
           </li>
           <li>
             <span class="check">✓</span> 隐私安全 — 所有数据存储在本地，AI
@@ -291,8 +338,15 @@
             <span class="check">✓</span> 中英双语 — 界面支持中文和英文一键切换
           </li>
           <li>
-            <span class="check">✓</span> 听写训练 — 逐句听写+逐词批改+AI
-            分析，精准提升听力
+            <span class="check">✓</span> 听写训练 — 逐句听写 + 逐词批改 +
+            渐进提示 + AI 分析
+          </li>
+          <li>
+            <span class="check">✓</span> 自动续播 —
+            记忆每个视频的播放位置，下次打开自动恢复
+          </li>
+          <li>
+            <span class="check">✓</span> 多平台 — macOS / iOS / Android 统一体验
           </li>
         </ul>
       </div>
@@ -318,9 +372,9 @@
     </section>
 
     <footer>
-      <p>© 2026 EvanPlayer. All rights reserved.</p>
+      <p>&copy; 2026 EvanPlayer. All rights reserved.</p>
       <p style="margin-top: 8px">
-        <a href="support.html">支持与帮助</a> ·
+        <a href="support.html">支持与帮助</a> &middot;
         <a href="privacy.html">隐私政策</a>
       </p>
     </footer>
