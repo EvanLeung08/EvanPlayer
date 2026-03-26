@@ -16,7 +16,7 @@
           sans-serif;
         background: #0a0e14;
         color: #e6edf3;
-        line-height: 1.8;
+        line-height: 1.7;
       }
       a {
         color: #58a6ff;
@@ -30,7 +30,6 @@
         margin: 0 auto;
         padding: 0 20px;
       }
-
       header {
         padding: 40px 20px 20px;
         text-align: center;
@@ -58,7 +57,6 @@
       header nav a:hover {
         color: #58a6ff;
       }
-
       .content {
         padding: 40px 0 60px;
       }
@@ -66,6 +64,8 @@
         font-size: 20px;
         color: #f0f6fc;
         margin: 32px 0 12px;
+        padding-bottom: 6px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
       }
       .content h2:first-child {
         margin-top: 0;
@@ -80,9 +80,10 @@
         margin-bottom: 12px;
       }
       .content ul li {
-        padding: 4px 0 4px 20px;
+        padding: 4px 0;
         color: #8b949e;
         font-size: 15px;
+        padding-left: 20px;
         position: relative;
       }
       .content ul li::before {
@@ -91,12 +92,11 @@
         position: absolute;
         left: 0;
       }
-      .updated {
+      .date {
         color: #484f58;
-        font-size: 13px;
+        font-size: 14px;
         margin-bottom: 24px;
       }
-
       footer {
         text-align: center;
         padding: 30px 20px;
@@ -104,12 +104,17 @@
         font-size: 13px;
         border-top: 1px solid rgba(255, 255, 255, 0.06);
       }
+      @media (max-width: 600px) {
+        header h1 {
+          font-size: 22px;
+        }
+      }
     </style>
   </head>
   <body>
     <header>
-      <h1>隐私政策</h1>
-      <p>EvanPlayer - AI 智能英语学习视频播放器</p>
+      <h1>EvanPlayer 隐私政策</h1>
+      <p>AI 智能英语学习视频播放器 &middot; macOS / iOS / Android</p>
       <nav>
         <a href="index.html">首页</a>
         <a href="support.html">帮助</a>
@@ -119,99 +124,117 @@
 
     <div class="container">
       <div class="content">
-        <p class="updated">最后更新日期：2026 年 3 月 21 日</p>
+        <p class="date">最后更新日期：2025 年 7 月</p>
 
+        <h2>1. 概述</h2>
         <p>
-          EvanPlayer（以下简称"本应用"）非常重视你的隐私。本隐私政策说明了本应用如何收集、使用和保护你的信息。
+          EvanPlayer（以下简称「我们」）非常重视你的隐私。本隐私政策说明我们如何在你使用
+          EvanPlayer App（macOS、iOS、Android）时收集、使用和保护你的信息。
         </p>
 
-        <h2>1. 信息收集</h2>
-        <p><strong>本应用不收集任何个人身份信息。</strong></p>
+        <h2>2. 本地优先原则</h2>
         <p>
-          本应用不使用任何第三方分析、广告、追踪或统计
-          SDK。不存在用户账户系统，不要求注册或登录。
+          EvanPlayer
+          采用「本地优先」设计理念。你的绝大部分数据均存储在设备本地，不会上传至我们的服务器：
         </p>
-
-        <h2>2. 本地数据存储</h2>
-        <p>本应用在你的设备上本地存储以下数据，仅用于提供应用功能：</p>
         <ul>
-          <li>
-            <strong>应用设置</strong>：界面语言、字幕外观、播放偏好等配置项
-          </li>
-          <li><strong>生词本</strong>：你保存的单词、释义、来源视频信息</li>
-          <li><strong>听写记录</strong>：听写练习的准确率和历史</li>
-          <li><strong>播放历史</strong>：视频的播放进度，用于断点续播</li>
-          <li><strong>离线词典</strong>：英语词典数据库（用户主动下载）</li>
-        </ul>
-        <p>所有数据仅存储在你的 Mac 上，不会上传到任何服务器。</p>
-
-        <h2>3. 网络通信</h2>
-        <p>本应用在以下场景中会进行网络通信：</p>
-        <ul>
-          <li>
-            <strong>AI 翻译服务</strong>：当你使用 AI
-            查词/翻译功能时，应用将你查询的单词或句子发送到你自行配置的 AI
-            服务（OpenAI API 或本地 Ollama
-            服务器）。本应用不经手、不转发、不存储任何 API 通信内容。
-          </li>
-          <li>
-            <strong>离线词典下载</strong>：首次使用时可选下载 ECDICT
-            离线词典，从 GitHub 公开仓库下载。
-          </li>
-        </ul>
-        <p>本应用不会在后台发起任何网络请求。所有网络通信均由用户主动触发。</p>
-
-        <h2>4. 第三方服务</h2>
-        <p>本应用支持接入以下第三方 AI 服务（由用户自行选择和配置）：</p>
-        <ul>
-          <li>
-            <strong>OpenAI API</strong>：使用你自己的 API Key 直连 OpenAI
-            服务器。你的 API Key 仅存储在本地设备上。请参阅
-            <a href="https://openai.com/privacy">OpenAI 隐私政策</a>。
-          </li>
-          <li>
-            <strong>Ollama</strong>：运行在你本地电脑上的 AI
-            服务，所有数据不离开你的设备。
-          </li>
-        </ul>
-        <p>本应用本身不运营任何云端服务。</p>
-
-        <h2>5. 敏感权限</h2>
-        <p>本应用不请求以下敏感权限：</p>
-        <ul>
-          <li>麦克风 / 摄像头</li>
-          <li>通讯录 / 日历</li>
-          <li>位置信息</li>
-          <li>照片图库</li>
-          <li>健康数据</li>
-        </ul>
-        <p>本应用仅请求以下权限：</p>
-        <ul>
-          <li>
-            <strong>文件访问</strong
-            >：通过系统文件选择器打开你选择的视频和字幕文件（只读），以及保存导出的词汇表（写入）
-          </li>
-          <li><strong>网络访问</strong>：用于 AI API 调用和离线词典下载</li>
+          <li>视频文件始终保留在你的设备上，不会被上传</li>
+          <li>字幕文件仅在本地读取和解析</li>
+          <li>生词本、听写记录、播放历史存储在本地 SQLite 数据库中</li>
+          <li>离线词典（ECDICT）下载后存储在本地，查词不需要联网</li>
+          <li>应用设置和偏好保存在本地</li>
         </ul>
 
-        <h2>6. 儿童隐私</h2>
-        <p>本应用不针对 13 岁以下的儿童，不故意收集儿童的任何信息。</p>
-
-        <h2>7. 数据删除</h2>
+        <h2>3. 网络请求</h2>
         <p>
-          卸载本应用将自动删除所有本地存储的数据。你也可以在应用运行期间手动删除生词本、听写记录等数据。
+          以下功能需要联网。你可以选择不使用这些功能，App
+          仍然可以正常播放视频和离线查词。
+        </p>
+        <ul>
+          <li>
+            <strong>AI 翻译与分析（托管模式）</strong
+            >：选中的单词或句子文本会发送到 EvanPlayer 服务器，由服务器中转至 AI
+            服务（如
+            OpenAI）。我们不会存储你发送的文本内容，仅记录使用次数以管理额度。
+          </li>
+          <li>
+            <strong>AI 翻译与分析（自定义模式）</strong>：文本直接发送到你配置的
+            AI 服务地址（OpenAI、DeepSeek、Ollama 等），不经过我们的服务器。
+          </li>
+          <li>
+            <strong>Google 翻译 / Bing 翻译</strong>：选中的文本发送至 Google 或
+            Bing 的翻译服务。
+          </li>
+          <li>
+            <strong>离线词典下载</strong>：首次安装词典时会从阿里云 OSS、14share
+            或 GitHub 下载词典压缩包（约
+            50MB）。我们不会在下载过程中收集你的个人信息。
+          </li>
+          <li>
+            <strong>TTS 朗读</strong
+            >：使用系统内置文字转语音引擎，朗读请求由系统处理。
+          </li>
+        </ul>
+
+        <h2>4. 我们不收集的信息</h2>
+        <ul>
+          <li>我们不收集你的姓名、邮箱地址或其他个人身份信息</li>
+          <li>我们不收集设备标识符（IDFA、IDFV、Android ID 等）</li>
+          <li>我们不集成任何第三方分析或广告 SDK</li>
+          <li>我们不追踪你的使用行为或浏览习惯</li>
+          <li>我们不访问你设备上 App 之外的文件</li>
+        </ul>
+
+        <h2>5. 权限说明</h2>
+        <p>EvanPlayer 可能请求以下系统权限，均仅用于核心功能：</p>
+        <ul>
+          <li>
+            <strong>文件访问</strong>（全平台）：打开视频和字幕文件。macOS App
+            Store 版本在沙箱中运行，需要用户手动授权文件夹访问。
+          </li>
+          <li><strong>相册访问</strong>（iOS）：仅在从相册选择视频时使用</li>
+          <li>
+            <strong>网络访问</strong>（全平台）：AI 翻译、Google/Bing
+            翻译、词典下载
+          </li>
+        </ul>
+
+        <h2>6. 数据存储位置</h2>
+        <ul>
+          <li>
+            <strong>macOS (App Store)</strong>：<code
+              style="
+                background: rgba(255, 255, 255, 0.06);
+                padding: 2px 6px;
+                border-radius: 4px;
+                font-size: 13px;
+                color: #c9d1d9;
+              "
+              >~/Library/Containers/com.evan.evanplayer/Data/.evanplayer/</code
+            >
+          </li>
+          <li><strong>iOS</strong>：App 沙箱内 Documents 目录</li>
+          <li><strong>Android</strong>：App 私有存储目录</li>
+        </ul>
+        <p>卸载 App 将自动删除上述目录中的所有数据。</p>
+
+        <h2>7. 儿童隐私</h2>
+        <p>
+          EvanPlayer 不会有意收集 13
+          岁以下儿童的个人信息。由于我们不收集任何个人信息，本 App
+          适合所有年龄段的用户使用。
         </p>
 
         <h2>8. 隐私政策变更</h2>
         <p>
-          如本隐私政策有更新，我们将在本页面发布新版本并更新"最后更新日期"。建议你定期查看本页面。
+          本隐私政策可能会不定期更新。更新后的政策将发布在本页面上，并更新「最后更新日期」。建议你定期查阅本页面以了解最新的隐私保护措施。
         </p>
 
-        <h2>9. 联系方式</h2>
-        <p>如果你对本隐私政策有任何疑问，请通过以下方式联系我们：</p>
+        <h2>9. 联系我们</h2>
+        <p>如对本隐私政策有任何疑问，请通过以下方式联系：</p>
         <p>
           📧
-          <a href="mailto:evanplayer.support@example.com"
+          <a href="mailto:evanplayer_support@163.com"
             >evanplayer_support@163.com</a
           >
         </p>
@@ -219,7 +242,7 @@
     </div>
 
     <footer>
-      <p>© 2026 EvanPlayer. All rights reserved.</p>
+      <p>&copy; 2026 EvanPlayer. All rights reserved.</p>
     </footer>
   </body>
 </html>
