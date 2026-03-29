@@ -567,8 +567,8 @@
               服务器中转，无需自行申请 API Key，按额度使用。
             </li>
             <li>
-              <strong>自定义模式</strong>：填入你自己的 OpenAI API Key（或
-              DeepSeek 等兼容 API），直连 AI 服务。也可使用 Ollama 本地 AI。
+              <strong>自定义模式</strong>：填入你自己的 AI API Key（如 DeepSeek
+              等），直连 AI 服务。也可使用 Ollama 本地 AI。
             </li>
           </ul>
         </div>
@@ -740,27 +740,26 @@
         </details>
 
         <details class="faq-item">
-          <summary>如何配置 OpenAI（自定义模式）？</summary>
+          <summary>如何配置自定义 AI（自定义模式）？</summary>
           <div class="answer">
             <p>设置 → AI 配置 → 切换到「自定义」模式：</p>
             <ol class="step-list">
               <li>
-                前往
-                <a href="https://platform.openai.com/api-keys"
-                  >platform.openai.com</a
-                >
-                注册并创建 API Key
+                前往你选择的 AI 服务商官网（如
+                <a href="https://platform.deepseek.com">DeepSeek</a>）注册并创建
+                API Key
               </li>
               <li>在 EvanPlayer 设置中填入 API Key</li>
               <li>
-                Base URL 保持默认（<code>https://api.openai.com/v1</code>）
+                Base URL 填写对应服务商地址（如
+                <code>https://api.deepseek.com/v1</code>）
               </li>
-              <li>模型推荐 <code>gpt-4o-mini</code>（性价比最高）</li>
+              <li>模型按需选择（如 <code>deepseek-chat</code>）</li>
               <li>点击「测试连接」验证配置</li>
             </ol>
             <p>
-              也可以使用 OpenAI 兼容 API（DeepSeek、Groq 等），只需修改 Base URL
-              和模型名称。
+              支持所有兼容接口的 AI 服务，只需填写对应的 Base URL、API Key
+              和模型名称即可。
             </p>
           </div>
         </details>
